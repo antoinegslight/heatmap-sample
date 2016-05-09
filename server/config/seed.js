@@ -4,17 +4,28 @@
  */
 
 'use strict';
+var fs = require('fs');
+var list = [];
+fs.readFile(__dirname + '/data.txt', 'utf8', function (err,data) {
+  if (err) {
+    return console.log("--->" + err);
+  }
+  var i = 0;
+  var j = 0;
+  list = data.split('\n');
+});
+
 import Coordinates from '../api/coordinates/coordinates.model';
 
   Coordinates.find({}).remove()
     .then(() => {
-      Coordinates.create(
-      {
-        latitude: '40.712070',
-        longitude: '-74.005350'
-      },
-      {
-        latitude: '42.712070',
-        longitude: '-75.005350'
+      list.forEach(function(elem){
+        var arg = elem.split(';');
+        Coordinates.create(
+            {
+              latitude: arg[1],
+              longitude: arg[2]
+            }
+        );
       });
     });
