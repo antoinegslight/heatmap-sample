@@ -30,9 +30,9 @@
                         layer.setData(dataPoints);
                         layer.setOptions({
                           dissipating: true,
-                          radius: 10,
+                          radius: 8,
                           opacity: 0.8,
-                          maxIntensity: 50,
+                          maxIntensity: 300,
                           gradient: [
                           'rgba(0, 255, 255, 0)',
                           'rgba(0, 255, 255, 1)',
