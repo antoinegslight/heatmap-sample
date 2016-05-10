@@ -23,6 +23,7 @@ import Coordinates from '../api/coordinates/coordinates.model';
         var arg = elem.split(';');
         Coordinates.create(
             {
+              weight: arg[0],
               latitude: arg[1],
               longitude: arg[2]
             }
