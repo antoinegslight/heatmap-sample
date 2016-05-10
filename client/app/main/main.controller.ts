@@ -38,8 +38,8 @@ class MainController {
                     layer.setOptions({
                       dissipating: true,
                       radius: 10,
-                      opacity: 0.8,
-                      maxIntensity: 50,
+                      opacity: 1,
+                      maxIntensity: 100,
                       gradient: [
                       'rgba(0, 255, 255, 0)',
                       'rgba(0, 255, 255, 1)',
@@ -63,10 +63,10 @@ class MainController {
   }
 
   $onInit() {
-    this.$http.get('/api/events').then(response => {
+    /*this.$http.get('/api/events').then(response => {
       this.events = response.data;
-      this.socket.syncUpdates('event', this.awesomeThings);
-    });
+      this.socket.syncUpdates('event', this.events);
+    });*/
   }
 
   addThing() {
