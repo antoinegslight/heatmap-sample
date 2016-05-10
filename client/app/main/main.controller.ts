@@ -21,7 +21,7 @@
         this.eventLocations = response.data;
       });
 
-      eventLocations.forEach(function(event){
+      this.eventLocations.forEach(function(event){
         var newPoint = {
           location: new google.maps.LatLng(event.latitude, event.longitude),
           weight: 100000
