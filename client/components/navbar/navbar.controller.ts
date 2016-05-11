@@ -11,15 +11,23 @@ class NavbarController {
 
   setStyle = function(id){
     this.selectedId = id;
-    console.log(this.selectedId);
   };
 
   isCollapsed = true;
   //end-non-standard
 
-  constructor() {
+  changeStyle = function(){
+    if(this.selectedId == 0){
+      this.map.showHeat = true;
+    } else if(this.selectedId == 1){
+      this.map.showHeat = false;
+    }
+  };
+
+  constructor(MapFactory) {
+    this.map = MapFactory;
     }
 }
 
 angular.module('heatmapSampleApp')
-  .controller('NavbarController', [NavbarController]);
+  .controller('NavbarController', ['MapFactory', NavbarController]);
