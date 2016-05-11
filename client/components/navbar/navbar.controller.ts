@@ -5,9 +5,10 @@ class NavbarController {
   selectedId = 0;
 
   menu = [
-    {'title': 'Style 1', 'state': 'main'},
-    {'title': 'Style 2', 'state': 'main'},
-    {'title': 'Style 3', 'state': 'main'}];
+    {'title': 'Blue', 'state': 'main'},
+    {'title': 'Gray', 'state': 'main'},
+    {'title': 'Dark', 'state': 'main'},
+    {'title': 'Pale', 'state': 'main'}];
 
   setStyle = function(id){
     this.selectedId = id;
@@ -17,10 +18,24 @@ class NavbarController {
   //end-non-standard
 
   changeStyle = function(){
+    switch(this.selectedId) {
+    case 0:
+        this.map.options.styles = this.map.styleBlue;
+        break;
+    case 1:
+        this.map.options.styles = this.map.styleShadesOfGray;
+        break;
+    case 2:
+        this.map.options.styles = this.map.styleDarkCatcher;
+        break;
+    case 3:
+      this.map.options.styles = this.map.stylePale;
+      break;
+}
     if(this.selectedId == 0){
-      this.map.showHeat = true;
+
     } else if(this.selectedId == 1){
-      this.map.showHeat = false;
+
     }
   };
 
