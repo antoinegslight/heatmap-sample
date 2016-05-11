@@ -1,3 +1,4 @@
 <ui-gmap-google-map center='$ctrl.map.center' zoom='$ctrl.map.zoom' options='$ctrl.map.options'>
   <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="$ctrl.map.showHeat" onCreated="$ctrl.map.heatLayerCallback"></ui-gmap-layer>
+  <ui-gmap-markers models='$ctrl.newEvents' coords='"coords"'></ui-gmap-markers>
 </ui-gmap-google-map>

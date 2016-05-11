@@ -9,6 +9,8 @@ class MainController {
     this.socket = socket;
     this.events = [];
 
+    this.newEvents = [];
+
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('event');
     });
@@ -25,7 +27,17 @@ class MainController {
                   heatLayerCallback: function (layer) {
                     self.$http.get('/api/events').then(response => {
                     self.events = response.data;
-                    self.socket.syncUpdates('event', self.events);
+                    self.socket.syncUpdates('event', self.events, function(event, item, object) {
+                        console.log(event);
+                        console.log(item);
+                        self.newEvents.push({
+                          id: item._id,
+                          coords: {
+                            latitude: item.latitude,
+                            longitude: item.longitude
+                          }
+                        });
+                    });
                     var pointsArray = [];
                     self.events.forEach(function(event){
                       var newPoint = {
@@ -69,7 +81,7 @@ class MainController {
     });*/
   }
 
-  addThing() {
+  /*addThing() {
     if (this.newEvent) {
       this.$http.post('/api/events', { name: this.newEvent });
       this.newEvent = '';
@@ -78,7 +90,7 @@ class MainController {
 
   deleteThing(thing) {
     this.$http.delete('/api/events/' + event._id);
-  }
+  }*/
 }
 
 angular.module('heatmapSampleApp')
