@@ -14,17 +14,16 @@ class MainController {
       socket.unsyncUpdates('event');
     });
 
-    var self = this;
   }
 
   $onInit() {
-    this.$http.get('/api/events').then(response => {
+    /*this.$http.get('/api/events').then(response => {
       this.events = response.data;
-      this.socket.syncUpdates('event', this.awesomeThings);
-    });
+      this.socket.syncUpdates('event', this.events);
+    });*/
   }
 
-  addThing() {
+  /*addThing() {
     if (this.newEvent) {
       this.$http.post('/api/events', { name: this.newEvent });
       this.newEvent = '';
@@ -33,7 +32,7 @@ class MainController {
 
   deleteThing(thing) {
     this.$http.delete('/api/events/' + event._id);
-  }
+  }*/
 }
 
 angular.module('heatmapSampleApp')
