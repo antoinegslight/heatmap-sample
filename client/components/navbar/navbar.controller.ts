@@ -2,10 +2,17 @@
 
 class NavbarController {
   //start-non-standard
-  menu = [{
-    'title': 'Home',
-    'state': 'main'
-  }];
+  selectedId = 0;
+
+  menu = [
+    {'title': 'Style 1', 'state': 'main'},
+    {'title': 'Style 2', 'state': 'main'},
+    {'title': 'Style 3', 'state': 'main'}];
+
+  setStyle = function(id){
+    this.selectedId = id;
+    console.log(this.selectedId);
+  };
 
   isCollapsed = true;
   //end-non-standard
@@ -15,4 +22,4 @@ class NavbarController {
 }
 
 angular.module('heatmapSampleApp')
-  .controller('NavbarController', NavbarController);
+  .controller('NavbarController', [NavbarController]);

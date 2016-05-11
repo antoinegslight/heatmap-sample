@@ -8,6 +8,7 @@ class MainController {
     this.$http = $http;
     this.socket = socket;
     this.events = [];
+    this.test = "maintest";
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('event');
