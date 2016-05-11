@@ -1,4 +1,4 @@
-<ui-gmap-google-map center='$ctrl.map.center' zoom='$ctrl.map.zoom' options='$ctrl.map.options'>
-  <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="$ctrl.map.showHeat" onCreated="$ctrl.map.heatLayerCallback"></ui-gmap-layer>
-  <ui-gmap-markers models='$ctrl.newEvents' coords='"coords"' icon="$ctrl.map.marker.icon" options="$ctrl.map.marker.options"></ui-gmap-markers>
+<ui-gmap-google-map center='$ctrl.map.map.center' zoom='$ctrl.map.map.zoom' options='$ctrl.map.map.options'>
+  <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="$ctrl.map.map.showHeat" onCreated="$ctrl.map.map.heatLayerCallback"></ui-gmap-layer>
+  <ui-gmap-markers models='$ctrl.map.newEvents' coords='"coords"' icon="$ctrl.map.map.marker.icon" options="$ctrl.map.map.marker.options"></ui-gmap-markers>
 </ui-gmap-google-map>

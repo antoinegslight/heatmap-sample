@@ -9,9 +9,11 @@
         "client/typings/**/*.d.ts"
     ],
     "files": [
+        "client/app/MapFactory/MapFactory.service.ts",
         "client/app/app.ts",
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",
+        "client/app/styleButton/styleButton.directive.ts",
         "client/components/footer/footer.directive.ts",
         "client/components/modal/modal.service.ts",
         "client/components/navbar/navbar.controller.ts",
