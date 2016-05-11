@@ -10,6 +10,7 @@ class MainController {
     this.events = [];
 
     this.newEvents = [];
+    this.heatArray = [];
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('event');
@@ -24,9 +25,24 @@ class MainController {
                     disableDefaultUI: true
                   },
                   showHeat: true,
+                  marker: {
+                    icon: {
+                      path: google.maps.SymbolPath.CIRCLE,
+                      fillColor: 'white',
+                      fillOpacity: 1,
+                      strokeColor: 'white',
+                      strokeOpacity: 0.7,
+                      strokeWeight: 2,
+                      scale: 3
+                    },
+                    options: {
+                      animation: google.maps.Animation.DROP
+                    }
+                  },
                   heatLayerCallback: function (layer) {
                     self.$http.get('/api/events').then(response => {
                     self.events = response.data;
+
                     self.socket.syncUpdates('event', self.events, function(event, item, object) {
                         console.log(event);
                         console.log(item);
@@ -37,16 +53,22 @@ class MainController {
                             longitude: item.longitude
                           }
                         });
+                        var newPoint = {
+                          location: new google.maps.LatLng(item.latitude, item.longitude),
+                          weight: item.weight
+                        };
+                        self.heatArray.push(newPoint);
+                        layer.setData(self.heatArray);
                     });
-                    var pointsArray = [];
+
                     self.events.forEach(function(event){
                       var newPoint = {
                         location: new google.maps.LatLng(event.latitude, event.longitude),
                         weight: event.weight
                       };
-                      pointsArray.push(newPoint);
+                      self.heatArray.push(newPoint);
                     });
-                    layer.setData(pointsArray);
+                    layer.setData(self.heatArray);
                     layer.setOptions({
                       dissipating: true,
                       radius: 10,
