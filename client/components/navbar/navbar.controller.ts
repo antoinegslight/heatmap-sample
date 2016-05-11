@@ -25,7 +25,7 @@ class NavbarController {
   };
 
   constructor(MapFactory) {
-    this.map = MapFactory.map;
+    this.map = MapFactory;
     }
 }
 
