@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
+<div class="navbar navbar-inverse navbar-static-top" ng-controller="NavbarController">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
@@ -7,14 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">heatmap-sample</a>
+      <a href="/" class="navbar-brand">Discovery | Heatmap</a>
     </div>
     <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in nav.menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
-        </li>
-      </ul>
+        <span ng-repeat="item in nav.menu">
+            <span ng-click="nav.setStyle($index); nav.changeStyle()" class="navbar-item"
+            ng-class="($index==nav.selectedId) ? 'nav-selected' : 'nav-unselected'">{{item.title}}</span>
+        </span>
     </div>
   </div>
 </div>
