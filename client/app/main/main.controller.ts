@@ -22,17 +22,6 @@ class MainController {
       this.socket.syncUpdates('event', this.events);
     });*/
   }
-
-  /*addThing() {
-    if (this.newEvent) {
-      this.$http.post('/api/events', { name: this.newEvent });
-      this.newEvent = '';
-    }
-  }
-
-  deleteThing(thing) {
-    this.$http.delete('/api/events/' + event._id);
-  }*/
 }
 
 angular.module('heatmapSampleApp')
