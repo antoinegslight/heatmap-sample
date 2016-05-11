@@ -12,7 +12,7 @@
     <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
         <span ng-repeat="item in nav.menu">
             <span ng-click="nav.setStyle($index); nav.changeStyle()" class="navbar-item"
-            ng-class="($index==nav.selectedId) ? 'nav-selected' : 'nav-unselected'">{{item.title}}</span>
+            ng-class="($index==nav.selectedId) ? 'nav-selected' : 'nav-unselected'">{{item.name}}</span>
         </span>
     </div>
   </div>
