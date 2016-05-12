@@ -2,13 +2,7 @@
 
 class NavbarController {
   //start-non-standard
-  selectedId = 0;
-
-  menu = [
-    {'title': 'Blue', 'state': 'main'},
-    {'title': 'Gray', 'state': 'main'},
-    {'title': 'Dark', 'state': 'main'},
-    {'title': 'Pale', 'state': 'main'}];
+  selectedId = 3;
 
   setStyle = function(id){
     this.selectedId = id;
@@ -18,30 +12,18 @@ class NavbarController {
   //end-non-standard
 
   changeStyle = function(){
-    switch(this.selectedId) {
-    case 0:
-        this.map.options.styles = this.map.styleBlue;
-        break;
-    case 1:
-        this.map.options.styles = this.map.styleShadesOfGray;
-        break;
-    case 2:
-        this.map.options.styles = this.map.styleDarkCatcher;
-        break;
-    case 3:
-      this.map.options.styles = this.map.stylePale;
-      break;
-}
-    if(this.selectedId == 0){
-
-    } else if(this.selectedId == 1){
-
-    }
+    this.map.options.styles = this.map.styles[this.selectedId];
   };
 
   constructor(MapFactory) {
     this.map = MapFactory;
-    }
+    var menu = [];
+    this.map.styles.forEach(function(style){
+      menu.push(style[0]);
+      menu.state = 'main';
+    });
+    this.menu = menu;
+  }
 }
 
 angular.module('heatmapSampleApp')
